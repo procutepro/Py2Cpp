@@ -6,10 +6,8 @@ __pycache__/
 venv/
 
 # Compiled C++
-*.exe
-*.o
-*.obj
 a.exe
+out.exe
 output
 output.exe
 
@@ -22,3 +20,4 @@ tests/
 
 # Other
 *.zip
+build/

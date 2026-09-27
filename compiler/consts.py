@@ -46,3 +46,5 @@ CPP_MAIN_TYPE_CONVERSION = {
     "list": "char**",
     "void": "void"
 }
+
+PYSTDLIB = open("compiler\\pystdlib.hpp").readlines()

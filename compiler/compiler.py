@@ -500,9 +500,9 @@ class Compiler:
         generated_code = [
             "#include <iostream>",
             "#include <string>",
-            '#include "pystdlib.hpp"',
-            "",
         ]
+
+        generated_code.extend(PYSTDLIB)
 
         functions = self.half_pass()
 

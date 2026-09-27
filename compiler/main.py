@@ -3,7 +3,7 @@ import argparse
 import subprocess
 import sys
 from compiler import Compiler
-
+import os
 
 def main():
     parser = argparse.ArgumentParser(
@@ -37,6 +37,11 @@ def main():
         "--version",
         action="version",
         version="py2cpp 0.1.0",
+    )
+
+    parser.add_argument(
+        "--keep-cpp",
+        action="store_true",
     )
     
     args = parser.parse_args()
@@ -72,9 +77,8 @@ def main():
             print("Error: g++ not found. Is it installed?", file=sys.stderr)
             sys.exit(1)
 
-    subprocess.run(shell=True, args=f"g++ {output} -o {output.replace(".c++", ".exe")} -O2")
-    #subprocess.run(shell=True, args=f"del {output}")
-
+    if not args.keep_cpp:
+        os.remove(output)
 
 if __name__ == "__main__":
     main()
