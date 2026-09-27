@@ -9,7 +9,7 @@ A compiler that translates a subset of Python to C++.
 - **Control flow**: `if`/`else`, `while`
 - **Functions**: with type annotations, return values
 - **`main()`**: maps to C++ `main` with `argc`/`argv`
-- **`print()`**: with type dispatch
+- **Built-ins** like **print()**
 
 ## How it works
 
