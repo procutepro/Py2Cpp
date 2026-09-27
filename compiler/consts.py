@@ -1,3 +1,6 @@
+import os
+import sys
+
 BUILD_INS = {
     "print": {
         "int": "int_py_print",
@@ -47,4 +50,11 @@ CPP_MAIN_TYPE_CONVERSION = {
     "void": "void"
 }
 
-PYSTDLIB = open("compiler\\pystdlib.hpp").readlines()
+def resource_path(relative_path):
+    """Get the absolute path to a resource, works for dev and PyInstaller."""
+    if hasattr(sys, "_MEIPASS"):
+        return os.path.join(sys._MEIPASS, relative_path)
+    return os.path.join(os.path.abspath("."), relative_path)
+
+with open(resource_path("pystdlib.hpp"), "r") as f:
+    PYSTDLIB = f.readlines()
