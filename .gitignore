@@ -21,3 +21,4 @@ tests/
 # Other
 *.zip
 build/
+.kilo/
