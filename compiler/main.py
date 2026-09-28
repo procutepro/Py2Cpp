@@ -69,7 +69,7 @@ def main():
     if args.run:
         try:
             subprocess.run(["g++", output, "-o", "output"], check=True)
-            subprocess.run(["./output"], check=True)
+            subprocess.run(["./output.exe"], check=True)
         except subprocess.CalledProcessError as e:
             print(f"Error: compilation failed", file=sys.stderr)
             sys.exit(1)

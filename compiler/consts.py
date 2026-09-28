@@ -6,19 +6,32 @@ BUILD_INS = {
         "int": "int_py_print",
         "float": "float_py_print",
         "str": "str_py_print",
+        "list": "list_py_print"
+    },
+    "len": {
+        "list": "list_py_len",
+        "str": "str_py_len",
+    },
+    "range": {
+        "int": "_py_range",
     }
 }
 
 TRANSLATION = {
     int: "int",
+    float: "float",
     str: "str",
+    list: "list",
+    tuple: "list",
 }
 
 # Return types for compiler/runtime built-ins.
 BUILD_IN_RETURN_TYPES = {
-    "int_py_print": "void",
-    "float_py_print": "void",
-    "str_py_print": "void",
+    "print": "void",
+
+    "len": "int",
+
+    "range": ("list", "int"),
 }
 
 OPCODE_TRANSLATION = {
@@ -31,19 +44,23 @@ OPCODE_TRANSLATION = {
 CPP_OTHER_CONVERSION = {
     int: "int",
     float: "float",
-    str: "std::string"
+    str: "std::string",
+    list: "std::vector<%>"
 }
 
 CPP_TYPE_CONVERSION = {
     "int": "int",
     "float": "float",
     "str": "std::string",
-    "void": "void"
+    "void": "void",
+    ("list", "int"): "std::vector<int>",
+    ("list", "str"): "std::vector<str>",
+    ("list", "float"): "std::vector<float>",
 }
 
 # Special C++ representation for main().
 CPP_MAIN_TYPE_CONVERSION = {
-    "int": "int",
+    "in": "int",
     "float": "float",
     "str": "std::string",
     "list": "char**",
@@ -51,10 +68,7 @@ CPP_MAIN_TYPE_CONVERSION = {
 }
 
 def resource_path(relative_path):
-    """Get the absolute path to a resource, works for dev and PyInstaller."""
-    if hasattr(sys, "_MEIPASS"):
-        return os.path.join(sys._MEIPASS, relative_path)
     return os.path.join(os.path.abspath("."), relative_path)
 
-with open(resource_path("pystdlib.hpp"), "r") as f:
+with open(resource_path("compiler\\pystdlib.hpp"), "r") as f:
     PYSTDLIB = f.readlines()

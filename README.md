@@ -4,12 +4,12 @@ A compiler that translates a subset of Python to C++.
 
 ## Features
 
-- **Types**: `int`, `float`, `str`, `bool`
+- **Types**: `int`, `float`, `str`, `bool`, `lists`
 - **Math**: `+`, `-`, `*`, `/`
-- **Control flow**: `if`/`else`, `while`
+- **Control flow**: `if`/`else`, `while`, ``for``
 - **Functions**: with type annotations, return values
 - **`main()`**: maps to C++ `main` with `argc`/`argv`
-- **Built-ins** like **print()**
+- **Built-ins** like **print()**, **len()**, **range()**
 
 ## How it works
 
